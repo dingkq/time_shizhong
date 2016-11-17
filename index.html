@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		.clock{
+		 background:url(images/clock.jpg)no-repeat;
+		 width:600px;
+		 height:600px;
+		 margin:100px auto;
+		 position:relative;
+		}
+		.clock div{
+		 width:100%;
+		 height:100%;
+		 position:absolute;
+		 top:0;
+		 left:0;
+		}
+		#h{
+		  background:url(images/hour.png) no-repeat center center;
+		}
+		#m{
+		 background:url(images/minute.png)no-repeat center center;
+		}
+		#s{
+		background:url(images/second.png)no-repeat center center;
+		}
+		</style>
+	</head>
+	<body>
+	<div class = "clock">
+	<div id = "h"></div>
+	<div id = "m"></div>
+	<div id = "s"></div>
+	</div>
+	</body>
+	<script>
+	 setInterval(function(){
+	 //通过id 获取所有的dom节点元素
+	  var hh = document.getElementById("h");
+	  var mm = document.getElementById("m");
+	  var ss  =document.getElementById("s");
+	 //获取当前的时间
+	  var date = new Date();
+	 //获取毫秒数
+	  var ms = date.getMilliseconds();
+	  //获取秒数
+	  var s = date.getSeconds()+ms/1000;
+	  //获取分钟数
+	  var m = date.getMinutes()+s/60;
+	  //获取小时数
+	  var h = date.getHours()%12+m/60; 
+	  
+	  ss.style.webkitTransform = "rotate("+s*6+"deg)";
+	  mm.style.webkitTransform = "rotate("+m*6+"deg)";
+	  hh.style.webkitTransform = "rotate("+h*30+"deg)";
+	 },100)
+	 var num = 369;
+	 var a = num%10;
+	 var b = parseInt((num/10)%10);
+	 var c = parseInt(num/100);
+	 console.log("个位"+a);
+	 console.log("十位"+b);
+	 console.log("百位"+c);
+	</script>
+</html>
